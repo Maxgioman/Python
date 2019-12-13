@@ -1,0 +1,8 @@
+Для запуску проекту у консолі введіть комвнду python manage.py runserver
+
+/admin - вхід як адміністратор
+/index - реєстрація користувача 
+/login - вхід у обліковий запис
+/user/playlist - створення плейлиста
+/userlist/track/add/ - додавання треку
+/user/playlist/modify/ - зміна вмісту плейлиста
