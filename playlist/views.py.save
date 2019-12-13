@@ -1,0 +1,103 @@
+from django.shortcuts import render
+
+# Create your views here.
+from django.http import HttpResponse
+from django.http import Http404, HttpResponseForbidden
+import re
+from .models import User
+from .models import Track
+from .models import Playlist
+
+def index(request):
+    if request.method == 'GET':
+        return render(request, 'registr.html')
+        return HttpResponse('Get')
+    if request.method == 'POST':
+        return render(request, 'registr.html')
+        #raise Http404('What are you posting into the index page?!')
+    return HttpResponse(str(request.method))
+# User Data
+def registration(request):
+    if request.method == 'POST':
+        username = request.POST.get('username', False)
+        firstname = request.POST.get('firstname', False)
+        lastname = request.POST.get('lastname', False)
+        email = request.POST.get('email', False)
+        password = request.POST.get('password', False)
+        phone = request.POST.get('phone', False)
+        if re.search('[a-zA-Z]', phone):
+            raise HttpResponseForbidden('phone has letters')
+        if not (username and firstname and lastname and email and password and phone):
+            return HttpResponseForbidden("user " + str(username) + " firstname "+str(firstname) +" lastname "+str(lastname)+" email " +str(email)+" password " +str(password)+" phone " +str(phone))
+        User.objects.create(username=username, firstname=firstname, lastname=lastname, email=email, password=password, phone=phone)
+        return HttpResponse("All done")
+    return HttpResponse("registration here")
+
+def login(request):
+    if request.method == 'GET':
+        username = request.GET.get('username', False)
+        password = request.GET.get('password', False)
+        if not (username and password):
+            return HttpResponseForbidden("403 not propriet Data")
+        # REALIZE THE F*CKING LOGIN AND REGISTER
+	
+    return HttpResponse("login here wrong method")
+
+def logout(request):
+    if request.method == 'GET':
+        pass
+    return HttpResponse("logout here")
+
+# Elements of playlist
+def userlist(request):
+    userId = request.GET.get('userId', False)
+    playlistId = request.GET.get('playlistId', False)
+    
+    if not (userId and playlistId):
+        raise Http404("No such playlist")
+	# CHECK HERE THIS IDS AND RAISE ERRORS
+
+    if request.method == 'GET':
+        pass
+    if request.method == 'POST':
+        pass
+    if request.method == 'DELETE':
+        pass
+    return HttpResponse("userlist here")
+
+def playlists(request):
+    playlistId = request.GET.get('playlistId', False)
+    
+    if not playlistId:
+        raise Http404("No such playlist")
+
+    if request.method == 'GET':
+        pass
+    if request.method == 'POST':
+        pass
+    if request.method == 'DELETE':
+        pass
+    return HttpResponse("playlists here")
+
+# playlists
+def userlists(request):
+    if request.method == 'GET':
+        pass
+    if request.method == 'POST':
+        pass
+    if request.method == 'PUT':
+        pass
+    if request.method == 'DELETE':
+        pass
+    return HttpResponse("userlists here")
+
+def publiclists(request):
+    if request.method == 'GET':
+        pass
+    if request.method == 'POST':
+        pass
+    if request.method == 'PUT':
+        pass
+    if request.method == 'DELETE':
+        pass
+    return HttpResponse("publicklists here")

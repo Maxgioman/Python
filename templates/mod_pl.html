@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Registration to PlayList</title>
+</head>
+<body class="container">
+
+    <form enctype="multipart/form-data" method="POST" action="add/">
+        {% csrf_token %}
+        <h1>Add new track</h1>
+        <p>
+            <label>PlaylistID </label><br>
+            <input type="text" name="playlistId" />
+        </p>
+        <p>
+            <label>Track ID</label><br>
+            <input type="text" name="tracksId" />
+        </p>
+        <p>
+            <label>User ID</label><br>
+            <input type="text" name="userId" />
+        </p>
+
+        <input type="submit" value="Save" >
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Registration to PlayList</title>
+</head>
+<body class="container">
+    <h2>Registration form</h2>
+    <form method="POST" action="registration/">
+        {% csrf_token %}
+        <p>
+            <label>Enter username</label><br>
+            <input type="text" name="username" />
+        </p>
+        <p>
+            <label>Enter firstname</label><br>
+            <input type="text" name="firstname" />
+        </p>
+        <p>
+            <label>Enter lastname</label><br>
+            <input type="text" name="lastname" />
+        </p>
+        <p>
+            <label>Enter email</label><br>
+            <input type="text" name="email" />
+        </p>
+        
+        <p>
+            <label>Enter password</label><br>
+            <input type="password" name="password" autocomplete="new-password" />
+        </p>
+        <p>
+            <label>Enter phone</label><br>
+            <input type="text" name="phone" />
+        </p>
+
+        <input type="submit" value="Registrate" >
+
+    </form>
+</body>
+</html>

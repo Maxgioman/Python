@@ -1,0 +1,10 @@
+{% block content %}
+<h1>Hello</h1>
+
+<form action="registration">
+    Enter username : <input type="text" name="username"><br>
+    <inpyt type="submit">
+</form>
+{%end block
+
+%}
